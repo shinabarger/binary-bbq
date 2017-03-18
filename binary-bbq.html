@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"/>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Slabo+27px" rel="stylesheet">
+        <title></title>
+
+    </head>
+    <style>
+        body {
+            font-family: 'Open Sans Condensed', sans-serif;
+            text-transform: uppercase;
+            margin-top: 50px;
+        }
+        .header {
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 7em;
+            line-height: 90px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 150;
+            margin-top: 5px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-size: 36px;
+        }
+
+        button {
+            font-family: 'Open Sans Condensed', sans-serif;
+            padding: 10px;
+            font-weight: 1000;
+            margin: 5px;
+            font-size: 20px;
+        }
+
+        hr {
+            margin-left: 5em;
+            margin-right: 5em;
+            margin-top: -15px;
+        }
+        .logo {
+            height: 10em;
+            padding-top: 200;
+            padding-bottom: 5;
+
+        }
+
+    </style>
+
+    <body>
+
+        <center>
+            <center>
+
+                <img class="logo" src=http://i.imgur.com/tG3f9UB.jpg/>
+                <p class="header">BINARY BBQ</p>
+
+                <hr/>
+                <h2>SELECT AN ENTREE</h2>
+                <button type="button" onclick="bbqOrder.push('Burger'); addToOrder();" id="burger">
+                    Burger</button>
+                <button type="button" onclick="bbqOrder.push('HotDog'); addToOrder();" id="hotdog">
+                    Hot Dog</button>
+                <button type="button" onclick="bbqOrder.push('Bratwurst'); addToOrder();" id="bratwurst">
+                    Bratwurst</button>
+                <button type="button" onclick="bbqOrder.push('VeggieBurger'); addToOrder();" id="veggieburger">
+                    Veggie Burger
+                </button>
+                <button type="button" onclick="bbqOrder.push('cheeseburger'); addToOrder();" id="cheeseburger">
+                    Cheeseburger</button>
+                <br>
+                <br>
+
+                <div>
+                    <p id="order">
+                        YOUR ORDER:
+                    </p>
+
+                    <p id="order_list"></p>
+                    <br/>
+                    <hr/>
+                    <br/>
+                </div>
+
+                <button type="button" id="submitorder" onclick="submitOrder()">SUBMIT ORDER</button>
+                <br>
+                <br>
+                <button type="button" id="clearOrder" onclick="cancel()">CANCEL</button>
+                <br/>
+
+            </center>
+        </body>
+        <script>
+            var bbqOrder = [];
+
+            function display() {
+                for (var i = 0; i < bbqOrder.length; i++) {
+                    document.write(bbqOrder[i] + "<br/>");
+                    console.log(bbqOrder[i] + "<br/>");
+                }
+            }
+
+            //got larry's help to fix the code so it doesn't print things multiple times in the display
+
+            function addToOrder() {
+
+                document.getElementById("order").innerHTML = "Your order:";
+                document.getElementById("order_list").innerHTML = "";
+                for (var i = 0; i < bbqOrder.length; i++) {
+                    var para = document.createElement("P");
+                    var t = document.createTextNode(bbqOrder[i]);
+                    para.appendChild(t);
+                    document.getElementById("order_list").appendChild(para);
+
+                }
+            }
+            function submitOrder() {}
+
+            function cancel() {
+                document.getElementById("order").innerHTML = "YOUR ORDER: ";
+                for (i = bbqOrder.length; i > 0; i--) {
+                    bbqOrder.pop();
+                    var para = document.createElement("P");
+
+                }
+                var t = document.createTextNode("Your order has been cleared.");
+                para.appendChild(t);
+                document.getElementById("order_list").appendChild(para);
+            }
+        </script>
+
+        <!--TODO Figure out how to put this in it's own .JS file -->
+
+    </html>
